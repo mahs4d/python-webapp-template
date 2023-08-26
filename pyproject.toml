@@ -1,0 +1,73 @@
+[tool.poetry]
+name = "python-webapp-template"
+version = "0.1.0"
+description = "Template for a python web application."
+authors = ["Mahdi Sadeghi <mahdi74sadeghi@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "src/python_webapp_template"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pydantic = "^2.2.1"
+fastapi = "^0.101.1"
+uvicorn = "^0.23.2"
+pydantic-settings = "^2.0.3"
+neo4j = "^5.11.0"
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.7.0"
+ruff = "^0.0.285"
+pytest = "^7.4.0"
+
+[tool.black]
+include = "src/|test/"
+extend-exclude = ".pyc"
+line-length = 100
+
+[tool.ruff]
+src = ["src/"]
+select = [
+    "F", # pyflakes
+    "E", # pycodestyle (Error)
+    "W", # pycodestyle (Warning)
+    "C90", # mccabe
+    "I", # isort
+    "UP", # pep8-naming
+    "ANN", # flake8-annotations
+    "ASYNC", # flake8-async
+    "S", # flake8-bandit
+    "BLE", # flake8-blind-except
+    "B", # flake8-bugbear
+    "COM", # flake8-commas
+    "C4", # flake8-comprehensions
+    "DTZ", # flake8-datetimez
+    "G", # flake8-logging-format
+    "PIE", # flake8-pie
+    "T20", # flake8-print
+    "PT", # flake8-pytest-style
+    "Q", # flake8-quotes
+    "RET", # flake8-return
+    "SLF", # flake8-self
+    "SIM", # flake8-simplify
+    "ARG", # flake8-unused-arguments
+    "PTH", # flake8-use-pathlib
+    "TD", # flake8-todos
+    "FIX", # flake8-fixme
+    "ERA", # flake8-eradicate
+    "PL", # flake8-pylint
+    "FLY", # flake8-flynt
+    "PERF", # flake8-perflint
+    "RUF", # ruff-specific
+    # "D", # Pydocstyle
+]
+ignore = [
+    "ANN101", # Missing type annotation for `self` in method.
+    "ARG004", # Unused static method argument.
+    "PLR0913", # Too many arguments to function call.
+]
+line-length = 100
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

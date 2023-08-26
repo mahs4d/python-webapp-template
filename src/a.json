@@ -1,0 +1,462 @@
+{
+  "slug": "",
+  "waypoints": [
+    {
+      "id": "87f3f923-74d7-4e89-affb-fccce0b0d24f"
+    },
+    {
+      "id": "77c5d6e2-e17d-4714-abea-f66a49487a17"
+    },
+    {
+      "id": "0657d00b-5a62-46e0-8fbf-f2703800baf7"
+    },
+    {
+      "id": "e451c12d-a407-47b0-a0ca-725efc3e9de6"
+    },
+    {
+      "id": "c2e0305d-67c0-49e0-878b-4155abb5245a"
+    },
+    {
+      "id": "a359b27d-69ab-4b91-ba5f-6f97193c3f99"
+    },
+    {
+      "id": "60e1422c-5bd5-4efd-a34b-905213fcf1de"
+    },
+    {
+      "id": "424329ce-9ea7-43ba-912c-9ecb59cdf823"
+    },
+    {
+      "id": "90d1a018-189c-4df1-80b3-d7fb429bbc09"
+    },
+    {
+      "id": "e0f6f675-1212-4118-b57a-3448d55a9120"
+    },
+    {
+      "id": "367b1648-800f-4f74-9146-56d95e027076"
+    },
+    {
+      "id": "2ae13596-0539-4c8b-8452-3aefb147e1ca"
+    },
+    {
+      "id": "a7e4b5c8-1f15-4ecd-b449-32eb2cd672cc"
+    },
+    {
+      "id": "4d4a55d2-920b-412e-a8eb-ac8ae9f0cefe"
+    },
+    {
+      "id": "249d4634-1a65-436a-a9a3-d89b92040eb8"
+    },
+    {
+      "id": "0108f7a0-d3c9-4411-b273-75f6587f9169"
+    },
+    {
+      "id": "2b1a3f45-0642-4979-82d1-ee0040700b3c"
+    }
+  ],
+  "locations": [
+    {
+      "id": "4db5d6a9-1eb7-4bea-b9be-e3b5d168bb97",
+      "barcode": "1x1",
+      "temperature_zone": "ambient"
+    },
+    {
+      "id": "8d6d6ed9-5f6a-4d6c-a6a7-263545677f60",
+      "barcode": "3x1",
+      "temperature_zone": "ambient"
+    },
+    {
+      "id": "ef4b4774-e318-4c52-b7c3-c45d04501b45",
+      "barcode": "5x1",
+      "temperature_zone": "ambient"
+    },
+    {
+      "id": "bcbd6934-ead0-4377-a910-c5934dc366d7",
+      "barcode": "1x2",
+      "temperature_zone": "ambient"
+    },
+    {
+      "id": "aceaf828-4455-4ff3-a440-69a9963b3d18",
+      "barcode": "3x2",
+      "temperature_zone": "ambient"
+    },
+    {
+      "id": "b50e706d-c69a-4942-8028-fe98ff4545a2",
+      "barcode": "5x2",
+      "temperature_zone": "ambient"
+    },
+    {
+      "id": "220607c6-e89e-4ccd-9bd4-d0d809313181",
+      "barcode": "1x3",
+      "temperature_zone": "ambient"
+    },
+    {
+      "id": "45a3009b-3acf-4093-8138-dabc2365fd49",
+      "barcode": "3x3",
+      "temperature_zone": "ambient"
+    },
+    {
+      "id": "eba3e4f1-5f7a-4ac6-bdec-77dd39efebeb",
+      "barcode": "5x3",
+      "temperature_zone": "ambient"
+    },
+    {
+      "id": "2a03f29a-1952-4954-89a5-fa1250e8b8fd",
+      "barcode": "1x5",
+      "temperature_zone": "chilled"
+    },
+    {
+      "id": "f4b764c7-826c-41a7-b920-942e5dce2d57",
+      "barcode": "3x5",
+      "temperature_zone": "chilled"
+    },
+    {
+      "id": "3ff5223a-236b-48a2-8f07-ad49363ed1c0",
+      "barcode": "5x5",
+      "temperature_zone": "chilled"
+    },
+    {
+      "id": "c5be2c4f-d39e-4863-9c27-fcbdfab614f0",
+      "barcode": "1x6",
+      "temperature_zone": "chilled"
+    },
+    {
+      "id": "57c51080-aa29-45e2-8995-4d44dd6d0ef5",
+      "barcode": "3x6",
+      "temperature_zone": "chilled"
+    },
+    {
+      "id": "97e3038d-432f-4dcf-b958-b98fdf19967e",
+      "barcode": "5x6",
+      "temperature_zone": "chilled"
+    },
+    {
+      "id": "61ccbbda-5ddd-4548-af13-a0324a164b12",
+      "barcode": "1x7",
+      "temperature_zone": "chilled"
+    },
+    {
+      "id": "a12093f3-bce5-4c77-98cf-7e75518fd4e6",
+      "barcode": "3x7",
+      "temperature_zone": "chilled"
+    },
+    {
+      "id": "a272735f-d70e-4aa6-ad58-dfb61b7cfef1",
+      "barcode": "5x7",
+      "temperature_zone": "chilled"
+    }
+  ],
+  "waypoint_to_waypoint_edges": [
+    {
+      "id": "5668b679-662a-4126-ab95-b18ce3a55141",
+      "waypoint_id": "87f3f923-74d7-4e89-affb-fccce0b0d24f",
+      "target_waypoint_id": "0657d00b-5a62-46e0-8fbf-f2703800baf7"
+    },
+    {
+      "id": "38dee34d-b66a-44b5-ab30-e7adc995b3f6",
+      "waypoint_id": "77c5d6e2-e17d-4714-abea-f66a49487a17",
+      "target_waypoint_id": "e451c12d-a407-47b0-a0ca-725efc3e9de6"
+    },
+    {
+      "id": "5ff326e9-d0ad-432e-8440-c0bc213a7f69",
+      "waypoint_id": "0657d00b-5a62-46e0-8fbf-f2703800baf7",
+      "target_waypoint_id": "87f3f923-74d7-4e89-affb-fccce0b0d24f"
+    },
+    {
+      "id": "d09d5c09-ebbc-40d5-b3ae-047a9b519687",
+      "waypoint_id": "0657d00b-5a62-46e0-8fbf-f2703800baf7",
+      "target_waypoint_id": "c2e0305d-67c0-49e0-878b-4155abb5245a"
+    },
+    {
+      "id": "2b311e6d-6938-41ac-a285-3e66b0de1c00",
+      "waypoint_id": "e451c12d-a407-47b0-a0ca-725efc3e9de6",
+      "target_waypoint_id": "77c5d6e2-e17d-4714-abea-f66a49487a17"
+    },
+    {
+      "id": "4a6d6dca-6797-41ce-8e2f-6a559e5ace5d",
+      "waypoint_id": "e451c12d-a407-47b0-a0ca-725efc3e9de6",
+      "target_waypoint_id": "a359b27d-69ab-4b91-ba5f-6f97193c3f99"
+    },
+    {
+      "id": "669ce9e3-9413-4cf1-93e8-854f3e983f59",
+      "waypoint_id": "c2e0305d-67c0-49e0-878b-4155abb5245a",
+      "target_waypoint_id": "0657d00b-5a62-46e0-8fbf-f2703800baf7"
+    },
+    {
+      "id": "4a8e531c-a8a2-462d-bf82-cf59177e7abb",
+      "waypoint_id": "c2e0305d-67c0-49e0-878b-4155abb5245a",
+      "target_waypoint_id": "424329ce-9ea7-43ba-912c-9ecb59cdf823"
+    },
+    {
+      "id": "6761b424-6963-4d0f-8f79-daa8a80f236a",
+      "waypoint_id": "a359b27d-69ab-4b91-ba5f-6f97193c3f99",
+      "target_waypoint_id": "e451c12d-a407-47b0-a0ca-725efc3e9de6"
+    },
+    {
+      "id": "f293b4b9-4e32-4fe8-b87a-b65969490973",
+      "waypoint_id": "a359b27d-69ab-4b91-ba5f-6f97193c3f99",
+      "target_waypoint_id": "e0f6f675-1212-4118-b57a-3448d55a9120"
+    },
+    {
+      "id": "acaa46bd-529c-486d-bc3d-caaca7928792",
+      "waypoint_id": "60e1422c-5bd5-4efd-a34b-905213fcf1de",
+      "target_waypoint_id": "424329ce-9ea7-43ba-912c-9ecb59cdf823"
+    },
+    {
+      "id": "5d73a528-a104-45a3-b908-bb2de27912bb",
+      "waypoint_id": "424329ce-9ea7-43ba-912c-9ecb59cdf823",
+      "target_waypoint_id": "60e1422c-5bd5-4efd-a34b-905213fcf1de"
+    },
+    {
+      "id": "a21e434d-97ac-4d59-88fb-f62eef5a21c4",
+      "waypoint_id": "424329ce-9ea7-43ba-912c-9ecb59cdf823",
+      "target_waypoint_id": "90d1a018-189c-4df1-80b3-d7fb429bbc09"
+    },
+    {
+      "id": "b0364176-2ef3-4218-a301-5efabd1a62fc",
+      "waypoint_id": "424329ce-9ea7-43ba-912c-9ecb59cdf823",
+      "target_waypoint_id": "c2e0305d-67c0-49e0-878b-4155abb5245a"
+    },
+    {
+      "id": "f090013d-2798-48a2-96e5-70653c2942c9",
+      "waypoint_id": "424329ce-9ea7-43ba-912c-9ecb59cdf823",
+      "target_waypoint_id": "2ae13596-0539-4c8b-8452-3aefb147e1ca"
+    },
+    {
+      "id": "3f767982-d48f-4cc4-9fd5-4d34a1e190dc",
+      "waypoint_id": "90d1a018-189c-4df1-80b3-d7fb429bbc09",
+      "target_waypoint_id": "424329ce-9ea7-43ba-912c-9ecb59cdf823"
+    },
+    {
+      "id": "a46f24da-fe6e-4d4f-9cde-7b354d43e04a",
+      "waypoint_id": "90d1a018-189c-4df1-80b3-d7fb429bbc09",
+      "target_waypoint_id": "e0f6f675-1212-4118-b57a-3448d55a9120"
+    },
+    {
+      "id": "c26dd5b6-8214-4640-86d1-fe4ff8fb1209",
+      "waypoint_id": "e0f6f675-1212-4118-b57a-3448d55a9120",
+      "target_waypoint_id": "90d1a018-189c-4df1-80b3-d7fb429bbc09"
+    },
+    {
+      "id": "bb451342-3ba1-40d4-89ea-b3e3bb6c4398",
+      "waypoint_id": "e0f6f675-1212-4118-b57a-3448d55a9120",
+      "target_waypoint_id": "367b1648-800f-4f74-9146-56d95e027076"
+    },
+    {
+      "id": "0afec384-f4ca-44ad-9efd-0890ff2b59c0",
+      "waypoint_id": "e0f6f675-1212-4118-b57a-3448d55a9120",
+      "target_waypoint_id": "a359b27d-69ab-4b91-ba5f-6f97193c3f99"
+    },
+    {
+      "id": "11d0042e-05f5-47da-ab1d-ee7df7e50164",
+      "waypoint_id": "e0f6f675-1212-4118-b57a-3448d55a9120",
+      "target_waypoint_id": "a7e4b5c8-1f15-4ecd-b449-32eb2cd672cc"
+    },
+    {
+      "id": "b49db5da-8500-422a-a39c-5c9d679a8347",
+      "waypoint_id": "367b1648-800f-4f74-9146-56d95e027076",
+      "target_waypoint_id": "e0f6f675-1212-4118-b57a-3448d55a9120"
+    },
+    {
+      "id": "8ea26232-eb65-4358-8a9e-76dd8595f762",
+      "waypoint_id": "2ae13596-0539-4c8b-8452-3aefb147e1ca",
+      "target_waypoint_id": "424329ce-9ea7-43ba-912c-9ecb59cdf823"
+    },
+    {
+      "id": "fc5400e1-5678-481d-86b5-3c0bc81d1ce3",
+      "waypoint_id": "2ae13596-0539-4c8b-8452-3aefb147e1ca",
+      "target_waypoint_id": "4d4a55d2-920b-412e-a8eb-ac8ae9f0cefe"
+    },
+    {
+      "id": "a74f5519-ff93-45ce-a252-c96344f24506",
+      "waypoint_id": "a7e4b5c8-1f15-4ecd-b449-32eb2cd672cc",
+      "target_waypoint_id": "e0f6f675-1212-4118-b57a-3448d55a9120"
+    },
+    {
+      "id": "bed8aec4-0dd7-44ea-842d-a170385d8f1a",
+      "waypoint_id": "a7e4b5c8-1f15-4ecd-b449-32eb2cd672cc",
+      "target_waypoint_id": "249d4634-1a65-436a-a9a3-d89b92040eb8"
+    },
+    {
+      "id": "8677998b-c56d-4575-9c52-0dc852e5ecf0",
+      "waypoint_id": "4d4a55d2-920b-412e-a8eb-ac8ae9f0cefe",
+      "target_waypoint_id": "2ae13596-0539-4c8b-8452-3aefb147e1ca"
+    },
+    {
+      "id": "788e5a56-5560-4be7-aed6-afaf09d8d8fc",
+      "waypoint_id": "4d4a55d2-920b-412e-a8eb-ac8ae9f0cefe",
+      "target_waypoint_id": "0108f7a0-d3c9-4411-b273-75f6587f9169"
+    },
+    {
+      "id": "e6e793d8-7148-4965-9257-28ab98d17862",
+      "waypoint_id": "249d4634-1a65-436a-a9a3-d89b92040eb8",
+      "target_waypoint_id": "a7e4b5c8-1f15-4ecd-b449-32eb2cd672cc"
+    },
+    {
+      "id": "029200a7-660c-4f6e-b28c-25b38de6187d",
+      "waypoint_id": "249d4634-1a65-436a-a9a3-d89b92040eb8",
+      "target_waypoint_id": "2b1a3f45-0642-4979-82d1-ee0040700b3c"
+    },
+    {
+      "id": "03d685ba-0a0a-4f26-9a6a-4e9c399032fd",
+      "waypoint_id": "0108f7a0-d3c9-4411-b273-75f6587f9169",
+      "target_waypoint_id": "4d4a55d2-920b-412e-a8eb-ac8ae9f0cefe"
+    },
+    {
+      "id": "640a5007-1a18-4363-89f9-e5c37d59d294",
+      "waypoint_id": "2b1a3f45-0642-4979-82d1-ee0040700b3c",
+      "target_waypoint_id": "249d4634-1a65-436a-a9a3-d89b92040eb8"
+    }
+  ],
+  "waypoint_to_location_edges": [
+    {
+      "id": "057f7f22-743d-421d-9b7e-74853a0e1ea5",
+      "waypoint_id": "87f3f923-74d7-4e89-affb-fccce0b0d24f",
+      "target_location_id": "4db5d6a9-1eb7-4bea-b9be-e3b5d168bb97"
+    },
+    {
+      "id": "2a01a9b7-d1d6-493c-9b7c-5c7bcf3d1fb6",
+      "waypoint_id": "87f3f923-74d7-4e89-affb-fccce0b0d24f",
+      "target_location_id": "8d6d6ed9-5f6a-4d6c-a6a7-263545677f60"
+    },
+    {
+      "id": "2d27bddf-ef44-478f-8bac-9597b88344cd",
+      "waypoint_id": "77c5d6e2-e17d-4714-abea-f66a49487a17",
+      "target_location_id": "8d6d6ed9-5f6a-4d6c-a6a7-263545677f60"
+    },
+    {
+      "id": "0ccc6e1a-aa89-43a6-ba0f-aa9cb92aa89c",
+      "waypoint_id": "77c5d6e2-e17d-4714-abea-f66a49487a17",
+      "target_location_id": "ef4b4774-e318-4c52-b7c3-c45d04501b45"
+    },
+    {
+      "id": "d46347f3-b193-4172-ad2e-56b9a70be932",
+      "waypoint_id": "0657d00b-5a62-46e0-8fbf-f2703800baf7",
+      "target_location_id": "bcbd6934-ead0-4377-a910-c5934dc366d7"
+    },
+    {
+      "id": "4a2ac025-548c-46bd-8664-8f35d70806e9",
+      "waypoint_id": "0657d00b-5a62-46e0-8fbf-f2703800baf7",
+      "target_location_id": "aceaf828-4455-4ff3-a440-69a9963b3d18"
+    },
+    {
+      "id": "b9f24c1e-af09-4dd3-9acb-74974a50200e",
+      "waypoint_id": "e451c12d-a407-47b0-a0ca-725efc3e9de6",
+      "target_location_id": "aceaf828-4455-4ff3-a440-69a9963b3d18"
+    },
+    {
+      "id": "0cd0484e-ac2e-42e4-984e-ba613de79489",
+      "waypoint_id": "e451c12d-a407-47b0-a0ca-725efc3e9de6",
+      "target_location_id": "b50e706d-c69a-4942-8028-fe98ff4545a2"
+    },
+    {
+      "id": "683599a9-8de5-4e7b-a1e8-6908203f8bbf",
+      "waypoint_id": "c2e0305d-67c0-49e0-878b-4155abb5245a",
+      "target_location_id": "220607c6-e89e-4ccd-9bd4-d0d809313181"
+    },
+    {
+      "id": "ebef63ea-856f-427a-99e5-270f78f62e10",
+      "waypoint_id": "c2e0305d-67c0-49e0-878b-4155abb5245a",
+      "target_location_id": "45a3009b-3acf-4093-8138-dabc2365fd49"
+    },
+    {
+      "id": "9c1a17fe-81c7-4e28-887c-2cbab60b4d9b",
+      "waypoint_id": "a359b27d-69ab-4b91-ba5f-6f97193c3f99",
+      "target_location_id": "45a3009b-3acf-4093-8138-dabc2365fd49"
+    },
+    {
+      "id": "8377873c-7ea6-4932-adfe-06df8b0f0a95",
+      "waypoint_id": "a359b27d-69ab-4b91-ba5f-6f97193c3f99",
+      "target_location_id": "eba3e4f1-5f7a-4ac6-bdec-77dd39efebeb"
+    },
+    {
+      "id": "16607cf1-a7e9-4025-a26e-a0c61d17c86b",
+      "waypoint_id": "60e1422c-5bd5-4efd-a34b-905213fcf1de",
+      "target_location_id": "220607c6-e89e-4ccd-9bd4-d0d809313181"
+    },
+    {
+      "id": "f04d1221-8b98-43d1-90f9-b425013656d2",
+      "waypoint_id": "60e1422c-5bd5-4efd-a34b-905213fcf1de",
+      "target_location_id": "2a03f29a-1952-4954-89a5-fa1250e8b8fd"
+    },
+    {
+      "id": "8c77b027-59e9-489d-af23-eb6583a3ca44",
+      "waypoint_id": "90d1a018-189c-4df1-80b3-d7fb429bbc09",
+      "target_location_id": "45a3009b-3acf-4093-8138-dabc2365fd49"
+    },
+    {
+      "id": "ac75a8e6-79c3-4f7d-82a7-5a9746ee674e",
+      "waypoint_id": "90d1a018-189c-4df1-80b3-d7fb429bbc09",
+      "target_location_id": "f4b764c7-826c-41a7-b920-942e5dce2d57"
+    },
+    {
+      "id": "0cfe5cce-0fbe-4fa8-ace7-45312c3638ca",
+      "waypoint_id": "367b1648-800f-4f74-9146-56d95e027076",
+      "target_location_id": "eba3e4f1-5f7a-4ac6-bdec-77dd39efebeb"
+    },
+    {
+      "id": "9df80868-f07f-4f8c-976e-b298c294b342",
+      "waypoint_id": "367b1648-800f-4f74-9146-56d95e027076",
+      "target_location_id": "3ff5223a-236b-48a2-8f07-ad49363ed1c0"
+    },
+    {
+      "id": "61a0907b-cdd7-4403-a30b-9a8b84f635e4",
+      "waypoint_id": "2ae13596-0539-4c8b-8452-3aefb147e1ca",
+      "target_location_id": "2a03f29a-1952-4954-89a5-fa1250e8b8fd"
+    },
+    {
+      "id": "ee7c943e-6d65-4366-9a45-3170caad2bae",
+      "waypoint_id": "2ae13596-0539-4c8b-8452-3aefb147e1ca",
+      "target_location_id": "f4b764c7-826c-41a7-b920-942e5dce2d57"
+    },
+    {
+      "id": "477fa7c2-a7ee-43da-a57c-35003268950d",
+      "waypoint_id": "a7e4b5c8-1f15-4ecd-b449-32eb2cd672cc",
+      "target_location_id": "f4b764c7-826c-41a7-b920-942e5dce2d57"
+    },
+    {
+      "id": "e6a0824c-340b-42fd-b240-84c40678c425",
+      "waypoint_id": "a7e4b5c8-1f15-4ecd-b449-32eb2cd672cc",
+      "target_location_id": "3ff5223a-236b-48a2-8f07-ad49363ed1c0"
+    },
+    {
+      "id": "e0da1868-2b43-4234-81a1-3b5a3ad0666c",
+      "waypoint_id": "4d4a55d2-920b-412e-a8eb-ac8ae9f0cefe",
+      "target_location_id": "c5be2c4f-d39e-4863-9c27-fcbdfab614f0"
+    },
+    {
+      "id": "2c27f8e1-816a-4064-8447-30eaf3026db6",
+      "waypoint_id": "4d4a55d2-920b-412e-a8eb-ac8ae9f0cefe",
+      "target_location_id": "57c51080-aa29-45e2-8995-4d44dd6d0ef5"
+    },
+    {
+      "id": "6662cfd4-599d-4e0a-bcc2-c253c375fef9",
+      "waypoint_id": "249d4634-1a65-436a-a9a3-d89b92040eb8",
+      "target_location_id": "57c51080-aa29-45e2-8995-4d44dd6d0ef5"
+    },
+    {
+      "id": "cbf1d903-9d3f-400f-84a9-dc041aaa1448",
+      "waypoint_id": "249d4634-1a65-436a-a9a3-d89b92040eb8",
+      "target_location_id": "97e3038d-432f-4dcf-b958-b98fdf19967e"
+    },
+    {
+      "id": "74170921-685b-4cd8-be9a-111413af4f11",
+      "waypoint_id": "0108f7a0-d3c9-4411-b273-75f6587f9169",
+      "target_location_id": "61ccbbda-5ddd-4548-af13-a0324a164b12"
+    },
+    {
+      "id": "3779dbd6-3a97-4d2a-a8f6-01e2eb4646bb",
+      "waypoint_id": "0108f7a0-d3c9-4411-b273-75f6587f9169",
+      "target_location_id": "a12093f3-bce5-4c77-98cf-7e75518fd4e6"
+    },
+    {
+      "id": "45a21abd-8041-4e99-94ee-be14226d2984",
+      "waypoint_id": "2b1a3f45-0642-4979-82d1-ee0040700b3c",
+      "target_location_id": "a12093f3-bce5-4c77-98cf-7e75518fd4e6"
+    },
+    {
+      "id": "25a273cb-ef52-429f-a03d-fc702a916a0b",
+      "waypoint_id": "2b1a3f45-0642-4979-82d1-ee0040700b3c",
+      "target_location_id": "a272735f-d70e-4aa6-ad58-dfb61b7cfef1"
+    }
+  ]
+}
