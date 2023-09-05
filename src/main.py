@@ -1,6 +1,6 @@
 import asyncio
 
-from python_webapp_template.container import AppRootContainer
+from python_webapp.container import AppRootContainer
 
 
 def main():

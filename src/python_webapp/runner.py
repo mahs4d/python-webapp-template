@@ -1,6 +1,6 @@
 import asyncio
 
-from python_webapp_template.core.manager import Manager
+from python_webapp.core.manager import Manager
 
 
 class Runner:

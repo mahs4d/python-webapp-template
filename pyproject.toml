@@ -5,20 +5,24 @@ description = "Template for a python web application."
 authors = ["Mahdi Sadeghi <mahdi74sadeghi@gmail.com>"]
 license = "MIT"
 readme = "README.md"
-packages = [{include = "src/python_webapp_template"}]
+packages = [{include = "src/python_webapp"}]
 
 [tool.poetry.dependencies]
 python = "^3.11"
-pydantic = "^2.2.1"
+pydantic = {extras = ["email"], version = "^2.3.0"}
 fastapi = "^0.101.1"
 uvicorn = "^0.23.2"
 pydantic-settings = "^2.0.3"
-neo4j = "^5.11.0"
+sqlalchemy = "^2.0.20"
+psycopg = "^3.1.10"
+alembic = {extras = ["tz"], version = "^1.12.0"}
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.7.0"
 ruff = "^0.0.285"
 pytest = "^7.4.0"
+pytest-cov = "^4.1.0"
+pytest-asyncio = "^0.21.1"
 
 [tool.black]
 include = "src/|test/"
