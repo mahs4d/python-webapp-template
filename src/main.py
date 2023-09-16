@@ -1,20 +1,10 @@
-import asyncio
-
 from python_webapp.container import AppRootContainer
 
 
 def main():
     container = AppRootContainer()
     runner = container.runner()
-
-    loop = asyncio.new_event_loop()
-    try:
-        loop.run_until_complete(runner.setup())
-        loop.run_until_complete(runner.run())
-    except KeyboardInterrupt:
-        loop.run_until_complete(runner.teardown())
-    finally:
-        loop.close()
+    runner.main()
 
 
 if __name__ == "__main__":

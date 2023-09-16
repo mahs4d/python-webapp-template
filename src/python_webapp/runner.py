@@ -1,24 +1,49 @@
 import asyncio
+import logging
 
 from python_webapp.core.manager import Manager
 
+logger = logging.getLogger(__name__)
+
 
 class Runner:
+    """Runner class is responsible for starting and ending the application."""
+
     def __init__(
-        self,
-        managers: list[Manager],
+            self,
+            managers: list[Manager],
     ):
         self.managers = managers
 
-    async def setup(self):
+    def main(self):
+        """Run the whole application.
+
+        This is the main entrypoint of the application.
+        """
+        logger.info("Starting the application")
+        loop = asyncio.new_event_loop()
+
+        try:
+            logger.debug("- Running `setup` on all managers")
+            loop.run_until_complete(self._setup())
+
+            logger.debug("- Running `run` on all managers (in parallel)")
+            loop.run_until_complete(self._run())
+        finally:
+            logger.debug("- Running `teardown` on all managers")
+            loop.run_until_complete(self._teardown())
+
+        loop.close()
+
+    async def _setup(self):
         for manager in self.managers:
             await manager.setup()
 
-    async def run(self):
+    async def _run(self):
         async with asyncio.TaskGroup() as tg:
             for manager in self.managers:
                 tg.create_task(manager.run())
 
-    async def teardown(self):
+    async def _teardown(self):
         for manager in self.managers:
             await manager.teardown()

@@ -49,7 +49,6 @@ class UserRepository(ABC):
     async def update_user_by_id(
         self,
         user_id: str,
-        *,
         firstname: str | None = None,
         lastname: str | None = None,
     ) -> None:
@@ -111,7 +110,6 @@ class SQLAlchemyUserRepository(UserRepository):
     async def update_user_by_id(
         self,
         user_id: str,
-        *,
         firstname: str | None = None,
         lastname: str | None = None,
     ) -> None:

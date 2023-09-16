@@ -72,6 +72,11 @@ ignore = [
 ]
 line-length = 100
 
+[tool.pytest.ini_options]
+pythonpath = [
+  "./src"
+]
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"

@@ -14,6 +14,8 @@ logger = logging.getLogger(__name__)
 
 
 class SQLAlchemyManager(HealthReportable, Manager):
+    """Manager for accessing database using `SQLAlchemy` library."""
+
     def __init__(
             self,
             sqlalchemy_url: str,
@@ -27,25 +29,26 @@ class SQLAlchemyManager(HealthReportable, Manager):
         self._async_sessionmaker: async_sessionmaker = None
 
     async def setup(self):
+        """Setup database manager."""
         logger.info("Setting up `SQLAlchemyManager`")
         if self._is_setup:
             raise Exception("Setup is called multiple times!")
 
-        # Create SQLAlchemy engine.
         logger.debug("- Creating SQLAlchemy engine and session maker")
         self._engine = create_async_engine(url=self.sqlalchemy_url)
         self._async_sessionmaker = async_sessionmaker(bind=self._engine)
 
-        # Create missing tables.
         logger.debug("- Running migrations")
         await self._run_migrations()
 
         self._is_setup = True
 
     async def run(self):
+        """Run doesn't do anything here."""
         pass
 
     async def teardown(self):
+        """Teardown database manager."""
         logger.info("Tearing down `SQLAlchemyManager`")
         if not self._is_setup:
             raise Exception("Teardown is called before setup!")
@@ -56,6 +59,7 @@ class SQLAlchemyManager(HealthReportable, Manager):
         self._is_setup = False
 
     async def get_health_report(self) -> HealthReport:
+        """Get database health report."""
         is_healthy = True
 
         if not self._is_setup:

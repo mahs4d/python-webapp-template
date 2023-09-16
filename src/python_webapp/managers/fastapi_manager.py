@@ -16,17 +16,18 @@ logger = logging.getLogger(__name__)
 
 
 class FastAPIManager(HealthReportable, Manager):
+    """Manager class for API server using `FastAPI` library."""
     def __init__(
-        self,
-        root_container: Container,
-        debug: bool,
-        title: str,
-        summary: str,
-        description: str,
-        version: Version,
-        host: str,
-        port: int,
-        routers: list[APIRouter],
+            self,
+            root_container: Container,
+            debug: bool,
+            title: str,
+            summary: str,
+            description: str,
+            version: Version,
+            host: str,
+            port: int,
+            routers: list[APIRouter],
     ):
         self.root_container = root_container
         self.debug = debug
@@ -43,45 +44,28 @@ class FastAPIManager(HealthReportable, Manager):
         self._uvicorn_server: uvicorn.Server = None
 
     async def setup(self):
+        """Setup API server."""
         logger.info("Setting up `FastAPIManager`")
         if self._is_setup:
             raise Exception("Setup is called multiple times!")
 
-        # Setup fastapi app.
         logger.debug("- Setting up fastapi app")
-        self._app = FastAPI(
-            debug=self.debug,
-            title=self.title,
-            summary=self.summary,
-            description=self.description,
-            version=str(self.version),
-        )
+        self._app = self._create_fastapi_app()
 
-        for router in self.routers:
-            self._app.include_router(router=router)
-
-        self._app.state.root_container = self.root_container
-
-        self._app.add_exception_handler(AppError, self._app_error_handler)
-
-        # Setup uvicorn server.
         logger.debug("- Setting up uvicorn")
-        uvicorn_config = uvicorn.Config(
-            app=self._app,
-            host=self.host,
-            port=self.port,
-        )
-        self._uvicorn_server = uvicorn.Server(config=uvicorn_config)
+        self._uvicorn_server = self._create_uvicorn_server()
 
         self._is_setup = True
 
     async def run(self):
+        """Run API server."""
         if not self._is_setup:
             raise Exception("Run is called before setup!")
 
         await self._uvicorn_server.serve()
 
     async def teardown(self):
+        """Stop and teardown """
         logger.info("Tearing down `FastAPIManager`")
         if not self._is_setup:
             raise Exception("Teardown is called before setup!")
@@ -92,18 +76,46 @@ class FastAPIManager(HealthReportable, Manager):
         self._is_setup = False
 
     async def get_health_report(self) -> HealthReport:
+        """Get API health report."""
         is_healthy = True
 
         if not self._is_setup:
             is_healthy = False
-
-        if not self._uvicorn_server.started:
+        elif not self._uvicorn_server.started:
             is_healthy = False
 
         return HealthReport(
             component="api",
             is_healthy=is_healthy,
         )
+
+    def _create_fastapi_app(self) -> FastAPI:
+        app = FastAPI(
+            debug=self.debug,
+            title=self.title,
+            summary=self.summary,
+            description=self.description,
+            version=str(self.version),
+        )
+
+        for router in self.routers:
+            app.include_router(router=router)
+
+        app.state.root_container = self.root_container
+
+        app.add_exception_handler(AppError, self._app_error_handler)
+
+        return app
+
+    def _create_uvicorn_server(self) -> uvicorn.Server:
+        uvicorn_config = uvicorn.Config(
+            app=self._app,
+            host=self.host,
+            port=self.port,
+        )
+        server = uvicorn.Server(config=uvicorn_config)
+
+        return server
 
     @staticmethod
     async def _app_error_handler(request: Request, exc: AppError) -> JSONResponse:

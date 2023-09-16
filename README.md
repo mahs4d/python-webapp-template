@@ -1,11 +1,6 @@
 # Python Web App Template
 
-## Database
+## TODO
 
-### Migrations
-
-We are using `alembic` for managing and applying database migrations.
-To create migrations use the following command:
-
-`sdf`
-
+- Transactions and Unit of Work.
+- E2E Tests.

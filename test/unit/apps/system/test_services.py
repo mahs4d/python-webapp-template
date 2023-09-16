@@ -10,43 +10,47 @@ from python_webapp.core.health import HealthReport, HealthReportable
 
 @pytest.mark.asyncio
 async def test_get_system_info():
-    """Test `get_system_info` method."""
-    mock_system_name = "foo"
-    mock_system_version = "1.2.3"
+    system_name_mock = "foo"
+    system_version_mock = "1.2.3"
 
     config = AsyncMock(Config)
-    config.system_name = mock_system_name
-    config.system_version = mock_system_version
+    config.system_name = system_name_mock
+    config.system_version = system_version_mock
+
+    expected_output = SystemInfo(
+        name=system_name_mock,
+        version=system_version_mock,
+    )
 
     system_services = SystemServices(
         config=config,
         health_reportables=[],
     )
+    output = await system_services.get_system_info()
 
-    system_info = await system_services.get_system_info()
-
-    assert system_info == SystemInfo(
-        name=mock_system_name,
-        version=mock_system_version,
-    )
+    assert output == expected_output
 
 
 @pytest.mark.asyncio
 async def test_get_health_reports():
-    """Test `get_health_reports` method."""
-    mock_health_report1 = HealthReport(
+    health_report1_mock = HealthReport(
         component="component1",
         is_healthy=True,
     )
-    mock_health_report2 = HealthReport(
+    health_report2_mock = HealthReport(
         component="component2",
         is_healthy=False,
     )
 
     health_reportable1 = AsyncMock(HealthReportable)
-    health_reportable1.get_health_report = AsyncMock(return_value=mock_health_report1)
+    health_reportable1.get_health_report = AsyncMock(return_value=health_report1_mock)
     health_reportable2 = AsyncMock(HealthReportable)
-    health_reportable2.get_health_report = AsyncMock(return_value=mock_health_report2)
+    health_reportable2.get_health_report = AsyncMock(return_value=health_report2_mock)
+
+    expected_output = [
+        health_report1_mock,
+        health_report2_mock,
+    ]
 
     system_services = SystemServices(
         config=AsyncMock(Config),
@@ -55,10 +59,6 @@ async def test_get_health_reports():
             health_reportable2,
         ],
     )
+    output = await system_services.get_health_reports()
 
-    health_reports = await system_services.get_health_reports()
-
-    assert health_reports == [
-        mock_health_report1,
-        mock_health_report2,
-    ]
+    assert output == expected_output

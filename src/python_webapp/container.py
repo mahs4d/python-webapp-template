@@ -28,6 +28,10 @@ class RootContainer(Container, ABC):
         pass
 
     @abstractmethod
+    def runner(self) -> Runner:
+        pass
+
+    @abstractmethod
     def fastapi_manager(self) -> FastAPIManager:
         pass
 
