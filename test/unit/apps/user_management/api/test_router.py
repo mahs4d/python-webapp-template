@@ -9,7 +9,7 @@ from python_webapp.apps.user_management.services import UserManagementServices
 from python_webapp.core.api.api_models import MessageResponse
 
 
-@pytest.fixture(name='user_management_services_mock')
+@pytest.fixture(name="user_management_services_mock")
 def fixture_user_management_services_mock() -> Annotated[AsyncMock, UserManagementServices]:
     return AsyncMock(UserManagementServices)
 
@@ -21,19 +21,19 @@ async def test_create_user(user_management_services_mock: UserManagementServices
     output = await create_user(
         user_management_services=user_management_services_mock,
         body=CreateUserBody(
-            email='foo@bar.com',
+            email="foo@bar.com",
             profile=UserProfileAPIModel(
-                firstname='foo',
-                lastname='bar',
-            )
+                firstname="foo",
+                lastname="bar",
+            ),
         ),
     )
 
     assert output == MessageResponse(
-        message='ok',
+        message="ok",
     )
     user_management_services_mock.create_user.assert_called_once_with(
-        email='foo@bar.com',
-        firstname='foo',
-        lastname='bar',
+        email="foo@bar.com",
+        firstname="foo",
+        lastname="bar",
     )

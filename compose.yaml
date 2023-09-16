@@ -1,0 +1,43 @@
+name: python_webapp
+
+services:
+  python_webapp:
+    build: .
+    environment:
+      PYTHON_WEBAPP_DEBUG: ${PYTHON_WEBAPP_DEBUG:-false}
+      PYTHON_WEBAPP_API_PORT: 8000
+      PYTHON_WEBAPP_POSTGRES_HOST: postgres
+      PYTHON_WEBAPP_POSTGRES_PORT: 5432
+      PYTHON_WEBAPP_POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      PYTHON_WEBAPP_POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres_pass}
+      PYTHON_WEBAPP_POSTGRES_DB_NAME: python_webapp
+    ports:
+      - 8000:8000
+    networks:
+      - main
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  postgres:
+    image: postgres:16
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    user: ${POSTGRES_USER:-postgres}
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres_pass}
+      POSTGRES_DB: python_webapp
+    networks:
+      - main
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+networks:
+  main:
+
+volumes:
+  postgres_data:

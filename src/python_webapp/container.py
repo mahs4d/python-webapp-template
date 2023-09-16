@@ -1,7 +1,5 @@
 from abc import ABC, abstractmethod
 
-from packaging.version import Version
-
 from python_webapp.apps.system.api.router import (
     router as system_router,
 )
@@ -77,7 +75,7 @@ class AppRootContainer(RootContainer):
             title=config.api_title,
             summary=config.api_summary,
             description=config.api_description,
-            version=Version(config.api_version),
+            version=config.api_version,
             routers=[
                 system_router,
                 user_management_router,

@@ -10,8 +10,8 @@ class Runner:
     """Runner class is responsible for starting and ending the application."""
 
     def __init__(
-            self,
-            managers: list[Manager],
+        self,
+        managers: list[Manager],
     ):
         self.managers = managers
 

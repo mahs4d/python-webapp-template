@@ -14,9 +14,7 @@ def get_all_db_models() -> list[Type[Base]]:
     """This function should return all db orm classes."""
     from python_webapp.apps.user_management.repositories.db_models import UserDBModel
 
-    return [
-        UserDBModel
-    ]
+    return [UserDBModel]
 
 
 def run_migrations_offline() -> None:
@@ -29,7 +27,6 @@ def run_migrations_offline() -> None:
 
     Calls to context.execute() here emit the given string to the
     script output.
-
     """
     get_all_db_models()
     target_metadata = Base.metadata
@@ -50,7 +47,6 @@ def run_migrations_online() -> None:
 
     In this scenario we need to create an Engine
     and associate a connection with the context.
-
     """
     get_all_db_models()
     target_metadata = Base.metadata
@@ -61,10 +57,7 @@ def run_migrations_online() -> None:
     )
 
     with connectable.connect() as connection:
-        context.configure(
-            connection=connection,
-            target_metadata=target_metadata
-        )
+        context.configure(connection=connection, target_metadata=target_metadata)
 
         with context.begin_transaction():
             context.run_migrations()

@@ -29,16 +29,16 @@ class UserManagementServices:
     PAGE_SIZE: Final[int] = 20
 
     def __init__(
-            self,
-            user_repository: UserRepository,
+        self,
+        user_repository: UserRepository,
     ) -> None:
         self.user_repository = user_repository
 
     async def create_user(
-            self,
-            email: EmailStr,
-            firstname: str | None,
-            lastname: str | None,
+        self,
+        email: EmailStr,
+        firstname: str | None,
+        lastname: str | None,
     ) -> None:
         """Create a new user."""
         # Check if user with the same email already exists.
@@ -76,10 +76,10 @@ class UserManagementServices:
         await self.user_repository.delete_user_by_id(user_id=user_id)
 
     async def update_user_by_id(
-            self,
-            user_id: str,
-            firstname: str | None,
-            lastname: str | None,
+        self,
+        user_id: str,
+        firstname: str | None,
+        lastname: str | None,
     ) -> None:
         """Update a single user by ID."""
         await self.user_repository.update_user_by_id(

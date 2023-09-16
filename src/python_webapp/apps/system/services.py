@@ -5,9 +5,9 @@ from python_webapp.core.health import HealthReportable, HealthReport
 
 class SystemServices:
     def __init__(
-            self,
-            config: Config,
-            health_reportables: list[HealthReportable],
+        self,
+        config: Config,
+        health_reportables: list[HealthReportable],
     ):
         self.config = config
         self.health_reportables = health_reportables

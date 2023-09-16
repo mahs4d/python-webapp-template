@@ -1,10 +1,9 @@
-from unittest.mock import AsyncMock
+from unittest.mock import AsyncMock, Mock
 
 import pytest
 
 from python_webapp.apps.system.domain import SystemInfo
 from python_webapp.apps.system.services import SystemServices
-from python_webapp.config import Config
 from python_webapp.core.health import HealthReport, HealthReportable
 
 
@@ -13,7 +12,7 @@ async def test_get_system_info():
     system_name_mock = "foo"
     system_version_mock = "1.2.3"
 
-    config = AsyncMock(Config)
+    config = Mock()
     config.system_name = system_name_mock
     config.system_version = system_version_mock
 
@@ -53,7 +52,7 @@ async def test_get_health_reports():
     ]
 
     system_services = SystemServices(
-        config=AsyncMock(Config),
+        config=Mock(),
         health_reportables=[
             health_reportable1,
             health_reportable2,

@@ -12,7 +12,7 @@ from python_webapp.apps.system.services import SystemServices
 from python_webapp.core.health import HealthReport
 
 
-@pytest.fixture(name='response_mock')
+@pytest.fixture(name="response_mock")
 def fixture_response_mock() -> Annotated[AsyncMock, Response]:
     response_mock = AsyncMock(Response)
     response_mock.status_code = status.HTTP_200_OK
@@ -20,7 +20,7 @@ def fixture_response_mock() -> Annotated[AsyncMock, Response]:
     return response_mock
 
 
-@pytest.fixture(name='system_services_mock')
+@pytest.fixture(name="system_services_mock")
 def fixture_system_services_mock() -> Annotated[AsyncMock, SystemServices]:
     return AsyncMock(SystemServices)
 
@@ -28,8 +28,8 @@ def fixture_system_services_mock() -> Annotated[AsyncMock, SystemServices]:
 @pytest.mark.asyncio
 async def test_get_system_info(system_services_mock: SystemServices):
     system_info = SystemInfo(
-        name='foo',
-        version='1.2.3',
+        name="foo",
+        version="1.2.3",
     )
     system_services_mock.get_system_info = AsyncMock(
         return_value=system_info,
@@ -48,11 +48,11 @@ async def test_get_system_info(system_services_mock: SystemServices):
 async def test_get_health_reports(response_mock: Response, system_services_mock: SystemServices):
     health_reports = [
         HealthReport(
-            component='api',
+            component="api",
             is_healthy=True,
         ),
         HealthReport(
-            component='db',
+            component="db",
             is_healthy=True,
         ),
     ]
@@ -72,18 +72,20 @@ async def test_get_health_reports(response_mock: Response, system_services_mock:
 
 
 @pytest.mark.asyncio
-async def test_get_health_reports_unhealthy(response_mock: Response, system_services_mock: SystemServices):
+async def test_get_health_reports_unhealthy(
+    response_mock: Response, system_services_mock: SystemServices
+):
     health_reports = [
         HealthReport(
-            component='api',
+            component="api",
             is_healthy=True,
         ),
         HealthReport(
-            component='event',
+            component="event",
             is_healthy=False,
         ),
         HealthReport(
-            component='db',
+            component="db",
             is_healthy=True,
         ),
     ]

@@ -4,7 +4,6 @@ import uvicorn
 from fastapi import FastAPI, APIRouter
 from fastapi.requests import Request
 from fastapi.responses import JSONResponse
-from packaging.version import Version
 
 from python_webapp.core.api.api_models import ErrorResponse
 from python_webapp.core.di import Container
@@ -17,17 +16,18 @@ logger = logging.getLogger(__name__)
 
 class FastAPIManager(HealthReportable, Manager):
     """Manager class for API server using `FastAPI` library."""
+
     def __init__(
-            self,
-            root_container: Container,
-            debug: bool,
-            title: str,
-            summary: str,
-            description: str,
-            version: Version,
-            host: str,
-            port: int,
-            routers: list[APIRouter],
+        self,
+        root_container: Container,
+        debug: bool,
+        title: str,
+        summary: str,
+        description: str,
+        version: str,
+        host: str,
+        port: int,
+        routers: list[APIRouter],
     ):
         self.root_container = root_container
         self.debug = debug
@@ -47,7 +47,8 @@ class FastAPIManager(HealthReportable, Manager):
         """Setup API server."""
         logger.info("Setting up `FastAPIManager`")
         if self._is_setup:
-            raise Exception("Setup is called multiple times!")
+            logger.warning("Setup is called multiple times!")
+            return
 
         logger.debug("- Setting up fastapi app")
         self._app = self._create_fastapi_app()
@@ -65,10 +66,11 @@ class FastAPIManager(HealthReportable, Manager):
         await self._uvicorn_server.serve()
 
     async def teardown(self):
-        """Stop and teardown """
+        """Stop and teardown"""
         logger.info("Tearing down `FastAPIManager`")
         if not self._is_setup:
-            raise Exception("Teardown is called before setup!")
+            logger.warning("Teardown is called before setup!")
+            return
 
         self._app = None
         self._uvicorn_server = None
@@ -95,7 +97,7 @@ class FastAPIManager(HealthReportable, Manager):
             title=self.title,
             summary=self.summary,
             description=self.description,
-            version=str(self.version),
+            version=self.version,
         )
 
         for router in self.routers:

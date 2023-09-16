@@ -19,8 +19,8 @@ class Config(BaseSettings):
     api_description: str = "API Description"
     api_version: str = "0.1.0"
 
-    postgres_host: str
-    postgres_port: int
-    postgres_db_name: str
-    postgres_user: str
-    postgres_password: str
+    postgres_host: str = "localhost"
+    postgres_port: int = 5432
+    postgres_user: str = "user"
+    postgres_password: str = "pass"
+    postgres_db_name: str = "python_webapp"

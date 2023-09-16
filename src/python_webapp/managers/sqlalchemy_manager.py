@@ -17,9 +17,9 @@ class SQLAlchemyManager(HealthReportable, Manager):
     """Manager for accessing database using `SQLAlchemy` library."""
 
     def __init__(
-            self,
-            sqlalchemy_url: str,
-            declarative_base_classes: list[type[DeclarativeBase]],
+        self,
+        sqlalchemy_url: str,
+        declarative_base_classes: list[type[DeclarativeBase]],
     ) -> None:
         self.sqlalchemy_url = sqlalchemy_url
         self.declarative_base_classes = declarative_base_classes
@@ -32,7 +32,8 @@ class SQLAlchemyManager(HealthReportable, Manager):
         """Setup database manager."""
         logger.info("Setting up `SQLAlchemyManager`")
         if self._is_setup:
-            raise Exception("Setup is called multiple times!")
+            logger.warning("Setup is called multiple times!")
+            return
 
         logger.debug("- Creating SQLAlchemy engine and session maker")
         self._engine = create_async_engine(url=self.sqlalchemy_url)
@@ -51,7 +52,8 @@ class SQLAlchemyManager(HealthReportable, Manager):
         """Teardown database manager."""
         logger.info("Tearing down `SQLAlchemyManager`")
         if not self._is_setup:
-            raise Exception("Teardown is called before setup!")
+            logger.warning("Teardown is called before setup!")
+            return
 
         self._engine = None
         self._async_sessionmaker = None
@@ -67,7 +69,7 @@ class SQLAlchemyManager(HealthReportable, Manager):
 
         try:
             async with self._engine.connect() as connection:
-                await connection.execute(text('SELECT 1;'))
+                await connection.execute(text("SELECT 1;"))
         except:
             is_healthy = False
 
@@ -85,17 +87,21 @@ class SQLAlchemyManager(HealthReportable, Manager):
     async def _run_migrations(self):
         def run_alembic_upgrade(connection: Connection):
             alembic_config = AlembicConfig(
-                file_=Path(__file__).parent.parent.parent.parent / 'alembic.ini',
+                file_=Path(__file__).parent.parent.parent.parent / "alembic.ini",
             )
             alembic_config.set_main_option(
-                name='script_location',
-                value=str(Path(__file__).parent.parent / 'migrations'),
+                name="script_location",
+                value=str(Path(__file__).parent.parent / "migrations"),
             )
-            alembic_config.attributes['connection'] = connection
+            alembic_config.set_main_option(
+                name="sqlalchemy.url",
+                value=self.sqlalchemy_url,
+            )
+            alembic_config.attributes["connection"] = connection
 
             upgrade(
                 config=alembic_config,
-                revision='head',
+                revision="head",
             )
 
         async with self._engine.connect() as conn:
@@ -104,13 +110,13 @@ class SQLAlchemyManager(HealthReportable, Manager):
 
 class PostgresManager(SQLAlchemyManager):
     def __init__(
-            self,
-            host: str,
-            port: int,
-            db_name: str,
-            user: str,
-            password: str,
-            declarative_base_classes: list[type[DeclarativeBase]],
+        self,
+        host: str,
+        port: int,
+        db_name: str,
+        user: str,
+        password: str,
+        declarative_base_classes: list[type[DeclarativeBase]],
     ):
         super().__init__(
             sqlalchemy_url=f"postgresql+psycopg://{user}:{password}@{host}:{port}/{db_name}",

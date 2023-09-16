@@ -30,7 +30,7 @@ def test_main():
 def test_main_with_error():
     manager1 = AsyncMock(Manager)
     manager2 = AsyncMock(Manager)
-    manager2.run = AsyncMock(side_effect=ValueError('error'))
+    manager2.run = AsyncMock(side_effect=ValueError("error"))
 
     runner = Runner(
         managers=[

@@ -9,7 +9,7 @@ from python_webapp.apps.user_management.repositories.user_repository import User
 from python_webapp.apps.user_management.services import UserManagementServices
 
 
-@pytest.fixture(name='user_repository_mock')
+@pytest.fixture(name="user_repository_mock")
 def fixture_user_repository_mock() -> Annotated[AsyncMock, UserRepository]:
     return AsyncMock(UserRepository)
 
@@ -24,15 +24,15 @@ async def test_create_user(user_repository_mock: UserRepository):
     )
 
     await user_services.create_user(
-        email='foo@bar.com',
-        firstname='foo',
-        lastname='bar',
+        email="foo@bar.com",
+        firstname="foo",
+        lastname="bar",
     )
 
     user_repository_mock.create_user.assert_called_once_with(
-        email='foo@bar.com',
-        firstname='foo',
-        lastname='bar',
+        email="foo@bar.com",
+        firstname="foo",
+        lastname="bar",
     )
 
 
@@ -47,9 +47,9 @@ async def test_create_user_duplicate_email_error(user_repository_mock: UserRepos
 
     with pytest.raises(DuplicateEmailError):
         await user_services.create_user(
-            email='foo@bar.com',
-            firstname='foo',
-            lastname='bar',
+            email="foo@bar.com",
+            firstname="foo",
+            lastname="bar",
         )
 
     user_repository_mock.create_user.assert_not_called()
@@ -58,8 +58,8 @@ async def test_create_user_duplicate_email_error(user_repository_mock: UserRepos
 @pytest.mark.asyncio
 async def test_get_users(user_repository_mock: UserRepository):
     users = [
-        User(id='1', email='foo1@bar.com', profile=Profile()),
-        User(id='2', email='foo2@bar.com', profile=Profile()),
+        User(id="1", email="foo1@bar.com", profile=Profile()),
+        User(id="2", email="foo2@bar.com", profile=Profile()),
     ]
     user_repository_mock.get_users = AsyncMock(return_value=users)
 
@@ -78,17 +78,17 @@ async def test_get_users(user_repository_mock: UserRepository):
 
 @pytest.mark.asyncio
 async def test_get_user_by_id(user_repository_mock: UserRepository):
-    user = User(id='1', email='foo1@bar.com', profile=Profile())
+    user = User(id="1", email="foo1@bar.com", profile=Profile())
     user_repository_mock.get_user_by_id = AsyncMock(return_value=user)
 
     user_services = UserManagementServices(
         user_repository=user_repository_mock,
     )
 
-    output = await user_services.get_user_by_id(user_id='1')
+    output = await user_services.get_user_by_id(user_id="1")
 
     assert output == user
-    user_repository_mock.get_user_by_id.assert_called_once_with(user_id='1')
+    user_repository_mock.get_user_by_id.assert_called_once_with(user_id="1")
 
 
 @pytest.mark.asyncio
@@ -100,7 +100,7 @@ async def test_get_user_by_id_not_found_error(user_repository_mock: UserReposito
     )
 
     with pytest.raises(UserNotFoundError):
-        await user_services.get_user_by_id(user_id='1')
+        await user_services.get_user_by_id(user_id="1")
 
 
 @pytest.mark.asyncio
@@ -111,9 +111,9 @@ async def test_delete_user_by_id(user_repository_mock: UserRepository):
         user_repository=user_repository_mock,
     )
 
-    await user_services.delete_user_by_id(user_id='1')
+    await user_services.delete_user_by_id(user_id="1")
 
-    user_repository_mock.delete_user_by_id.assert_called_once_with(user_id='1')
+    user_repository_mock.delete_user_by_id.assert_called_once_with(user_id="1")
 
 
 @pytest.mark.asyncio
@@ -124,10 +124,10 @@ async def test_update_user_by_id(user_repository_mock: UserRepository):
         user_repository=user_repository_mock,
     )
 
-    await user_services.update_user_by_id(user_id='1', firstname='foo', lastname='bar')
+    await user_services.update_user_by_id(user_id="1", firstname="foo", lastname="bar")
 
     user_repository_mock.update_user_by_id.assert_called_once_with(
-        user_id='1',
-        firstname='foo',
-        lastname='bar',
+        user_id="1",
+        firstname="foo",
+        lastname="bar",
     )
