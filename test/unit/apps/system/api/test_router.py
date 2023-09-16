@@ -5,8 +5,8 @@ import pytest
 from fastapi import Response
 from starlette import status
 
-from python_webapp.apps.system.api.api_models import GetSystemInfoResponse, GetHealthReportsResponse
-from python_webapp.apps.system.api.router import get_system_info, get_health_reports
+from python_webapp.apps.system.api.api_models import GetHealthReportsResponse, GetSystemInfoResponse
+from python_webapp.apps.system.api.router import get_health_reports, get_system_info
 from python_webapp.apps.system.domain import SystemInfo
 from python_webapp.apps.system.services import SystemServices
 from python_webapp.core.health import HealthReport
@@ -25,8 +25,8 @@ def fixture_system_services_mock() -> Annotated[AsyncMock, SystemServices]:
     return AsyncMock(SystemServices)
 
 
-@pytest.mark.asyncio
-async def test_get_system_info(system_services_mock: SystemServices):
+@pytest.mark.asyncio()
+async def test_get_system_info(system_services_mock: SystemServices) -> None:
     system_info = SystemInfo(
         name="foo",
         version="1.2.3",
@@ -44,8 +44,11 @@ async def test_get_system_info(system_services_mock: SystemServices):
     )
 
 
-@pytest.mark.asyncio
-async def test_get_health_reports(response_mock: Response, system_services_mock: SystemServices):
+@pytest.mark.asyncio()
+async def test_get_health_reports(
+    response_mock: Response,
+    system_services_mock: SystemServices,
+) -> None:
     health_reports = [
         HealthReport(
             component="api",
@@ -71,10 +74,11 @@ async def test_get_health_reports(response_mock: Response, system_services_mock:
     assert response_mock.status_code == status.HTTP_200_OK
 
 
-@pytest.mark.asyncio
+@pytest.mark.asyncio()
 async def test_get_health_reports_unhealthy(
-    response_mock: Response, system_services_mock: SystemServices
-):
+    response_mock: Response,
+    system_services_mock: SystemServices,
+) -> None:
     health_reports = [
         HealthReport(
             component="api",

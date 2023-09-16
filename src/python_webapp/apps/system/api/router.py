@@ -1,6 +1,6 @@
 from typing import Annotated
 
-from fastapi import APIRouter, status, Depends, Response
+from fastapi import APIRouter, Depends, Response, status
 
 from python_webapp.apps.system.api import dependencies
 from python_webapp.apps.system.api.api_models import (
@@ -34,7 +34,7 @@ async def get_health_reports(
     health_reports = await system_services.get_health_reports()
 
     # Only return 200 if all components are healthy.
-    if not all([hr.is_healthy for hr in health_reports]):
+    if not all(hr.is_healthy for hr in health_reports):
         response.status_code = status.HTTP_409_CONFLICT
 
     return GetHealthReportsResponse(health_reports=health_reports)

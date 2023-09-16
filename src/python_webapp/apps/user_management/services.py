@@ -2,13 +2,11 @@
 
 import logging
 from typing import (
-    Annotated,
     Final,
 )
 
 from pydantic import (
     EmailStr,
-    Field,
 )
 
 from python_webapp.apps.user_management.domain import User

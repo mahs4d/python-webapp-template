@@ -7,8 +7,8 @@ from python_webapp.apps.system.services import SystemServices
 from python_webapp.core.health import HealthReport, HealthReportable
 
 
-@pytest.mark.asyncio
-async def test_get_system_info():
+@pytest.mark.asyncio()
+async def test_get_system_info() -> None:
     system_name_mock = "foo"
     system_version_mock = "1.2.3"
 
@@ -30,8 +30,8 @@ async def test_get_system_info():
     assert output == expected_output
 
 
-@pytest.mark.asyncio
-async def test_get_health_reports():
+@pytest.mark.asyncio()
+async def test_get_health_reports() -> None:
     health_report1_mock = HealthReport(
         component="component1",
         is_healthy=True,

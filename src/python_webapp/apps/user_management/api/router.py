@@ -8,7 +8,6 @@ from fastapi import (
 from fastapi.routing import APIRouter
 from starlette import status
 
-from python_webapp.core.api.api_models import MessageResponse
 from python_webapp.apps.user_management.api import dependencies
 from python_webapp.apps.user_management.api.api_models import (
     CreateUserBody,
@@ -18,6 +17,7 @@ from python_webapp.apps.user_management.api.api_models import (
     UserAPIModel,
 )
 from python_webapp.apps.user_management.services import UserManagementServices
+from python_webapp.core.api.api_models import MessageResponse
 
 router = APIRouter(
     prefix="/v1/user-management",

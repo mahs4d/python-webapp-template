@@ -1,14 +1,14 @@
 import logging
 
 import uvicorn
-from fastapi import FastAPI, APIRouter
+from fastapi import APIRouter, FastAPI
 from fastapi.requests import Request
 from fastapi.responses import JSONResponse
 
 from python_webapp.core.api.api_models import ErrorResponse
 from python_webapp.core.di import Container
 from python_webapp.core.errors import AppError
-from python_webapp.core.health import HealthReportable, HealthReport
+from python_webapp.core.health import HealthReport, HealthReportable
 from python_webapp.core.manager import Manager
 
 logger = logging.getLogger(__name__)
@@ -28,7 +28,7 @@ class FastAPIManager(HealthReportable, Manager):
         host: str,
         port: int,
         routers: list[APIRouter],
-    ):
+    ) -> None:
         self.root_container = root_container
         self.debug = debug
         self.title = title
@@ -43,7 +43,7 @@ class FastAPIManager(HealthReportable, Manager):
         self._app: FastAPI = None
         self._uvicorn_server: uvicorn.Server = None
 
-    async def setup(self):
+    async def setup(self) -> None:
         """Setup API server."""
         logger.info("Setting up `FastAPIManager`")
         if self._is_setup:
@@ -58,14 +58,14 @@ class FastAPIManager(HealthReportable, Manager):
 
         self._is_setup = True
 
-    async def run(self):
+    async def run(self) -> None:
         """Run API server."""
         if not self._is_setup:
             raise Exception("Run is called before setup!")
 
         await self._uvicorn_server.serve()
 
-    async def teardown(self):
+    async def teardown(self) -> None:
         """Stop and teardown"""
         logger.info("Tearing down `FastAPIManager`")
         if not self._is_setup:
@@ -81,9 +81,7 @@ class FastAPIManager(HealthReportable, Manager):
         """Get API health report."""
         is_healthy = True
 
-        if not self._is_setup:
-            is_healthy = False
-        elif not self._uvicorn_server.started:
+        if not self._is_setup or not self._uvicorn_server.started:
             is_healthy = False
 
         return HealthReport(
@@ -115,9 +113,7 @@ class FastAPIManager(HealthReportable, Manager):
             host=self.host,
             port=self.port,
         )
-        server = uvicorn.Server(config=uvicorn_config)
-
-        return server
+        return uvicorn.Server(config=uvicorn_config)
 
     @staticmethod
     async def _app_error_handler(request: Request, exc: AppError) -> JSONResponse:

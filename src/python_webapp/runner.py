@@ -12,10 +12,10 @@ class Runner:
     def __init__(
         self,
         managers: list[Manager],
-    ):
+    ) -> None:
         self.managers = managers
 
-    def main(self):
+    def main(self) -> None:
         """Run the whole application.
 
         This is the main entrypoint of the application.
@@ -35,15 +35,15 @@ class Runner:
 
         loop.close()
 
-    async def _setup(self):
+    async def _setup(self) -> None:
         for manager in self.managers:
             await manager.setup()
 
-    async def _run(self):
+    async def _run(self) -> None:
         async with asyncio.TaskGroup() as tg:
             for manager in self.managers:
                 tg.create_task(manager.run())
 
-    async def _teardown(self):
+    async def _teardown(self) -> None:
         for manager in self.managers:
             await manager.teardown()

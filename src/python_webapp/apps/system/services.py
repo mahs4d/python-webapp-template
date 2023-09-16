@@ -1,6 +1,6 @@
 from python_webapp.apps.system.domain import SystemInfo
 from python_webapp.config import Config
-from python_webapp.core.health import HealthReportable, HealthReport
+from python_webapp.core.health import HealthReport, HealthReportable
 
 
 class SystemServices:
@@ -8,7 +8,7 @@ class SystemServices:
         self,
         config: Config,
         health_reportables: list[HealthReportable],
-    ):
+    ) -> None:
         self.config = config
         self.health_reportables = health_reportables
 

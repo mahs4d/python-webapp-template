@@ -1,7 +1,7 @@
 from python_webapp.container import AppRootContainer
 
 
-def main():
+def main() -> None:
     container = AppRootContainer()
     runner = container.runner()
     runner.main()

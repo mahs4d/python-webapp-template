@@ -3,13 +3,13 @@ from abc import ABC, abstractmethod
 
 class Manager(ABC):
     @abstractmethod
-    async def setup(self):
+    async def setup(self) -> None:
         pass
 
     @abstractmethod
-    async def run(self):
+    async def run(self) -> None:
         pass
 
     @abstractmethod
-    async def teardown(self):
+    async def teardown(self) -> None:
         pass

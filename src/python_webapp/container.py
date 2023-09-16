@@ -9,14 +9,14 @@ from python_webapp.apps.user_management.repositories.db_models import (
     Base as UserManagementDeclarativeBase,
 )
 from python_webapp.apps.user_management.repositories.user_repository import (
-    UserRepository,
     SQLAlchemyUserRepository,
+    UserRepository,
 )
 from python_webapp.apps.user_management.services import UserManagementServices
 from python_webapp.config import Config
 from python_webapp.core.di import Container, singleton
 from python_webapp.managers.fastapi_manager import FastAPIManager
-from python_webapp.managers.sqlalchemy_manager import SQLAlchemyManager, PostgresManager
+from python_webapp.managers.sqlalchemy_manager import PostgresManager, SQLAlchemyManager
 from python_webapp.runner import Runner
 
 

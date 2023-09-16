@@ -1,7 +1,7 @@
 """Create User
 
 Revision ID: dfbec4a2555c
-Revises: 
+Revises:
 Create Date: 2023-09-05 14:39:25.027802+00:00
 
 """

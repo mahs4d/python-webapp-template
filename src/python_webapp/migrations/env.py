@@ -1,7 +1,7 @@
 from typing import Type
 
 from alembic import context
-from sqlalchemy import pool, engine_from_config
+from sqlalchemy import engine_from_config, pool
 
 from python_webapp.core.db import Base
 

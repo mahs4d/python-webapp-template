@@ -1,6 +1,6 @@
 from typing import Self
 
-from pydantic import BaseModel, EmailStr, ConfigDict
+from pydantic import BaseModel, ConfigDict, EmailStr
 
 
 class Profile(BaseModel):

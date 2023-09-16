@@ -4,10 +4,11 @@ from pathlib import Path
 from alembic.command import upgrade
 from alembic.config import Config as AlembicConfig
 from sqlalchemy import Connection, text
-from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, AsyncEngine
+from sqlalchemy.exc import OperationalError
+from sqlalchemy.ext.asyncio import AsyncEngine, async_sessionmaker, create_async_engine
 from sqlalchemy.orm import DeclarativeBase
 
-from python_webapp.core.health import HealthReportable, HealthReport
+from python_webapp.core.health import HealthReport, HealthReportable
 from python_webapp.core.manager import Manager
 
 logger = logging.getLogger(__name__)
@@ -28,7 +29,7 @@ class SQLAlchemyManager(HealthReportable, Manager):
         self._engine: AsyncEngine = None
         self._async_sessionmaker: async_sessionmaker = None
 
-    async def setup(self):
+    async def setup(self) -> None:
         """Setup database manager."""
         logger.info("Setting up `SQLAlchemyManager`")
         if self._is_setup:
@@ -44,11 +45,10 @@ class SQLAlchemyManager(HealthReportable, Manager):
 
         self._is_setup = True
 
-    async def run(self):
+    async def run(self) -> None:
         """Run doesn't do anything here."""
-        pass
 
-    async def teardown(self):
+    async def teardown(self) -> None:
         """Teardown database manager."""
         logger.info("Tearing down `SQLAlchemyManager`")
         if not self._is_setup:
@@ -70,7 +70,7 @@ class SQLAlchemyManager(HealthReportable, Manager):
         try:
             async with self._engine.connect() as connection:
                 await connection.execute(text("SELECT 1;"))
-        except:
+        except OperationalError:
             is_healthy = False
 
         return HealthReport(
@@ -84,8 +84,8 @@ class SQLAlchemyManager(HealthReportable, Manager):
 
         return self._async_sessionmaker()
 
-    async def _run_migrations(self):
-        def run_alembic_upgrade(connection: Connection):
+    async def _run_migrations(self) -> None:
+        def run_alembic_upgrade(connection: Connection) -> None:
             alembic_config = AlembicConfig(
                 file_=Path(__file__).parent.parent.parent.parent / "alembic.ini",
             )
@@ -117,7 +117,7 @@ class PostgresManager(SQLAlchemyManager):
         user: str,
         password: str,
         declarative_base_classes: list[type[DeclarativeBase]],
-    ):
+    ) -> None:
         super().__init__(
             sqlalchemy_url=f"postgresql+psycopg://{user}:{password}@{host}:{port}/{db_name}",
             declarative_base_classes=declarative_base_classes,

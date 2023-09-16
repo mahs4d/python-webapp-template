@@ -10,7 +10,6 @@ from python_webapp.apps.user_management.domain import (
     User,
 )
 
-
 # region common
 
 

@@ -3,7 +3,6 @@ from pydantic import BaseModel
 from python_webapp.apps.system.domain import SystemInfo
 from python_webapp.core.health import HealthReport
 
-
 # region get_system_info
 
 
