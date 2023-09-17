@@ -1,5 +1,3 @@
-from typing import Self
-
 from pydantic import BaseModel, ConfigDict, EmailStr
 
 
@@ -8,8 +6,8 @@ class Profile(BaseModel):
 
     model_config = ConfigDict(frozen=True)
 
-    firstname: str | None = None
-    lastname: str | None = None
+    firstname: str = ""
+    lastname: str = ""
 
 
 class User(BaseModel):
@@ -18,6 +16,3 @@ class User(BaseModel):
     id: str
     email: EmailStr
     profile: Profile
-
-    def __eq__(self, other: Self) -> bool:
-        return self.id == other.id

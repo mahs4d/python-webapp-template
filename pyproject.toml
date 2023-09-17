@@ -23,10 +23,11 @@ ruff = "^0.0.285"
 pytest = "^7.4.0"
 pytest-cov = "^4.1.0"
 pytest-asyncio = "^0.21.1"
+mypy = "^1.5.1"
 
 [tool.black]
 include = "src/|test/"
-extend-exclude = "\\.pyc|\\.mako"
+extend-exclude = "\\.pyc$|\\.mako"
 line-length = 100
 
 [tool.ruff]
@@ -71,6 +72,12 @@ ignore = [
     "PLR0913", # Too many arguments to function call.
 ]
 line-length = 100
+
+[tool.mypy]
+python_version = "3.11"
+exclude = [
+    ".venv"
+]
 
 [tool.pytest.ini_options]
 pythonpath = [

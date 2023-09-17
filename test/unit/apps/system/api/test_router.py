@@ -26,7 +26,7 @@ def fixture_system_services_mock() -> Annotated[AsyncMock, SystemServices]:
 
 
 @pytest.mark.asyncio()
-async def test_get_system_info(system_services_mock: SystemServices) -> None:
+async def test_get_system_info(system_services_mock: Annotated[AsyncMock, SystemServices]) -> None:
     system_info = SystemInfo(
         name="foo",
         version="1.2.3",
@@ -46,8 +46,8 @@ async def test_get_system_info(system_services_mock: SystemServices) -> None:
 
 @pytest.mark.asyncio()
 async def test_get_health_reports(
-    response_mock: Response,
-    system_services_mock: SystemServices,
+    response_mock: Annotated[AsyncMock, Response],
+    system_services_mock: Annotated[AsyncMock, SystemServices],
 ) -> None:
     health_reports = [
         HealthReport(
@@ -76,8 +76,8 @@ async def test_get_health_reports(
 
 @pytest.mark.asyncio()
 async def test_get_health_reports_unhealthy(
-    response_mock: Response,
-    system_services_mock: SystemServices,
+    response_mock: Annotated[AsyncMock, Response],
+    system_services_mock: Annotated[AsyncMock, SystemServices],
 ) -> None:
     health_reports = [
         HealthReport(

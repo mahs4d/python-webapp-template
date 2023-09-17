@@ -15,7 +15,9 @@ def fixture_user_management_services_mock() -> Annotated[AsyncMock, UserManageme
 
 
 @pytest.mark.asyncio()
-async def test_create_user(user_management_services_mock: UserManagementServices) -> None:
+async def test_create_user(
+    user_management_services_mock: Annotated[AsyncMock, UserManagementServices],
+) -> None:
     user_management_services_mock.create_user = AsyncMock()
 
     output = await create_user(

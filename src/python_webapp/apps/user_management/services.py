@@ -35,8 +35,8 @@ class UserManagementServices:
     async def create_user(
         self,
         email: EmailStr,
-        firstname: str | None,
-        lastname: str | None,
+        firstname: str,
+        lastname: str,
     ) -> None:
         """Create a new user."""
         # Check if user with the same email already exists.

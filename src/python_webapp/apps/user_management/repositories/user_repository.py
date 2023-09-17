@@ -35,7 +35,7 @@ class UserRepository(ABC):
     async def get_user_by_id(
         self,
         user_id: str,
-    ) -> User:
+    ) -> User | None:
         """Get a single user by ID."""
 
     @abstractmethod

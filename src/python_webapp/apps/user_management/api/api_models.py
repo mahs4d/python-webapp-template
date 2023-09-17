@@ -16,8 +16,8 @@ from python_webapp.apps.user_management.domain import (
 class UserProfileAPIModel(BaseModel):
     """New user profile model."""
 
-    firstname: str | None = None
-    lastname: str | None = None
+    firstname: str = ""
+    lastname: str = ""
 
     @staticmethod
     def from_domain(profile: Profile) -> UserProfileAPIModel:

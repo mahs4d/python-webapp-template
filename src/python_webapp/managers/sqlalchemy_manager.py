@@ -5,7 +5,12 @@ from alembic.command import upgrade
 from alembic.config import Config as AlembicConfig
 from sqlalchemy import Connection, text
 from sqlalchemy.exc import OperationalError
-from sqlalchemy.ext.asyncio import AsyncEngine, async_sessionmaker, create_async_engine
+from sqlalchemy.ext.asyncio import (
+    AsyncEngine,
+    AsyncSession,
+    async_sessionmaker,
+    create_async_engine,
+)
 from sqlalchemy.orm import DeclarativeBase
 
 from python_webapp.core.health import HealthReport, HealthReportable
@@ -26,8 +31,8 @@ class SQLAlchemyManager(HealthReportable, Manager):
         self.declarative_base_classes = declarative_base_classes
 
         self._is_setup = False
-        self._engine: AsyncEngine = None
-        self._async_sessionmaker: async_sessionmaker = None
+        self._engine: AsyncEngine = None  # type: ignore
+        self._async_sessionmaker: async_sessionmaker = None  # type: ignore
 
     async def setup(self) -> None:
         """Setup database manager."""
@@ -55,8 +60,8 @@ class SQLAlchemyManager(HealthReportable, Manager):
             logger.warning("Teardown is called before setup!")
             return
 
-        self._engine = None
-        self._async_sessionmaker = None
+        self._engine = None  # type: ignore
+        self._async_sessionmaker = None  # type: ignore
 
         self._is_setup = False
 
@@ -78,7 +83,7 @@ class SQLAlchemyManager(HealthReportable, Manager):
             is_healthy=is_healthy,
         )
 
-    def get_async_session(self) -> async_sessionmaker:
+    def get_async_session(self) -> AsyncSession:
         if not self._is_setup:
             raise Exception("Setup is not called!")
 

@@ -40,8 +40,8 @@ class FastAPIManager(HealthReportable, Manager):
         self.routers = routers
 
         self._is_setup = False
-        self._app: FastAPI = None
-        self._uvicorn_server: uvicorn.Server = None
+        self._app: FastAPI = None  # type: ignore
+        self._uvicorn_server: uvicorn.Server = None  # type: ignore
 
     async def setup(self) -> None:
         """Setup API server."""
@@ -72,8 +72,8 @@ class FastAPIManager(HealthReportable, Manager):
             logger.warning("Teardown is called before setup!")
             return
 
-        self._app = None
-        self._uvicorn_server = None
+        self._app = None  # type: ignore
+        self._uvicorn_server = None  # type: ignore
 
         self._is_setup = False
 
