@@ -18,4 +18,4 @@ RUN --mount=type=cache,target=/tmp/poetry_cache \
 COPY src /app/src
 
 WORKDIR /app/src
-ENTRYPOINT ["python", "main.py"]
+ENTRYPOINT ["python", "main.py", "app", "run"]

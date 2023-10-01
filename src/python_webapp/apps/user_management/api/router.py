@@ -1,12 +1,12 @@
 from typing import Annotated
 
 from fastapi import (
+    APIRouter,
     Body,
     Depends,
     Query,
+    status,
 )
-from fastapi.routing import APIRouter
-from starlette import status
 
 from python_webapp.apps.user_management.api import dependencies
 from python_webapp.apps.user_management.api.api_models import (

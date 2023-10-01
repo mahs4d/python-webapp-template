@@ -66,7 +66,7 @@ class FastAPIManager(HealthReportable, Manager):
         await self._uvicorn_server.serve()
 
     async def teardown(self) -> None:
-        """Stop and teardown"""
+        """Stop and teardown API server."""
         logger.info("Tearing down `FastAPIManager`")
         if not self._is_setup:
             logger.warning("Teardown is called before setup!")

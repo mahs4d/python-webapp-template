@@ -26,7 +26,7 @@ async def get_system_info(
     return GetSystemInfoResponse(system_info=system_info)
 
 
-@router.get("/health-reports", status_code=status.HTTP_200_OK)
+@router.get("/health_reports", status_code=status.HTTP_200_OK)
 async def get_health_reports(
     system_services: Annotated[SystemServices, Depends(dependencies.system_services)],
     response: Response,

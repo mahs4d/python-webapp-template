@@ -15,7 +15,7 @@ class Runner:
     ) -> None:
         self.managers = managers
 
-    def main(self) -> None:
+    def run(self) -> None:
         """Run the whole application.
 
         This is the main entrypoint of the application.
