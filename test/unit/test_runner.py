@@ -6,7 +6,7 @@ from python_webapp.core.manager import Manager
 from python_webapp.runner import Runner
 
 
-def test_main() -> None:
+def test_run() -> None:
     manager1 = AsyncMock(Manager)
     manager2 = AsyncMock(Manager)
 
@@ -17,7 +17,7 @@ def test_main() -> None:
         ],
     )
 
-    runner.main()
+    runner.run()
 
     manager1.setup.assert_called()
     manager2.setup.assert_called()
@@ -27,7 +27,7 @@ def test_main() -> None:
     manager2.teardown.assert_called()
 
 
-def test_main_with_error() -> None:
+def test_run_with_error() -> None:
     manager1 = AsyncMock(Manager)
     manager2 = AsyncMock(Manager)
     manager2.run = AsyncMock(side_effect=ValueError("error"))
@@ -40,7 +40,7 @@ def test_main_with_error() -> None:
     )
 
     with pytest.raises(ExceptionGroup):
-        runner.main()
+        runner.run()
 
     manager1.setup.assert_called()
     manager2.setup.assert_called()
